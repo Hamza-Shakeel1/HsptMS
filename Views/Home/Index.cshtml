@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center bg-danger  h-50">
+    <h1 class="display-4 ">Welcome to HMS</h1>
+    <p>Design by Hamza Shakeel</p>
+    <div class="counter">
+        This page has been viewed <span id="viewCount">0</span> times.
+    </div>
+
+    <script>
+
+        let viewCount = localStorage.getItem('viewCount');
+
+       
+        if (viewCount === null) {
+            viewCount = 0;
+        }
+
+  
+        viewCount++;
+
+      
+        localStorage.setItem('viewCount', viewCount);
+
+     
+        document.getElementById('viewCount').innerText = viewCount;
+
+    </script>
+</div>

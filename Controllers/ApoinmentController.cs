@@ -1,5 +1,5 @@
 ﻿using HsptMS.Abstraction;
-using HsptMS.Models;
+using HsptMS.Data.Models;
 using HsptMS.Servises;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,10 +8,11 @@ namespace HsptMS.Controllers
     public class ApoinmentController:Controller
     {
 		private readonly IAppoinmentServises _appoinmentServises;
-
-        public ApoinmentController(IAppoinmentServises appoinmentServises)
+        private readonly HmsContext _hmscontext;
+        public ApoinmentController(IAppoinmentServises appoinmentServises, HmsContext hmscontext)
         {
             _appoinmentServises = appoinmentServises;
+            _hmscontext = hmscontext;
         }
 
         public ActionResult Index()

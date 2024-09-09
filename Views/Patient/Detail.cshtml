@@ -1,4 +1,4 @@
-﻿@model Patient
+﻿@model HsptMS.Data.Models.Patient
 
 @{
     ViewData["Title"] = "Patient Details";
@@ -32,7 +32,7 @@
             <dd class="col-sm-9">
                 @if (Model.Address != null)
                 {
-                    <p>@Model.Address.StreetNo, @Model.Address.City, @Model.Address.Area</p>
+                    <p>@Model.Address.Street, @Model.Address.City, @Model.Address.Country</p>
                 }
                 else
                 {
@@ -44,10 +44,10 @@
             <dd class="col-sm-9">@Model.DoctorId</dd>
 
             <dt class="col-sm-3">Admission Date</dt>
-            <dd class="col-sm-9">@Model.RegisterDate</dd>
+            <dd class="col-sm-9">@Model.AdmissionDate</dd>
 
             <dt class="col-sm-3">Discharge Date</dt>
-            <dd class="col-sm-9">@Model.DischargeDate.ToShortDateString()</dd>
+            <dd class="col-sm-9">@Model.DischargeDate</dd>
         </dl>
 
         <!-- Action Buttons -->

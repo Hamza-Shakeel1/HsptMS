@@ -1,41 +1,45 @@
 ﻿using HsptMS.Abstraction;
-using HsptMS.Models;
+using HsptMS.Data.Models;
 
 namespace HsptMS.Servises
 {
 	public class AppoinmentServises:IAppoinmentServises
 	{
-        private static List<Appointment> _appointment = Seed.SeedAppointment();
+        private readonly HmsContext _hmscontext;
+        public AppoinmentServises(HmsContext hmscontext)
+        {
+            _hmscontext= hmscontext;
+        }
 
         public List<Appointment> Appointments()
         {
-            return _appointment;
+            return _hmscontext.Appointments.ToList();
         }
         public void AddAppoinment(Appointment appointment)
         {
 
-            _appointment.Add(appointment);
+            _hmscontext.Appointments.Add(appointment);
         }
 
         public void RemoveAppoinment(Guid id) 
         {
-            var appoinments= _appointment.FirstOrDefault(x => x.Id == id);
+            var appoinments= _hmscontext.Appointments.FirstOrDefault(x => x.Id == id);
             if (appoinments != null)
             {
-                _appointment.Remove(appoinments);
+                _hmscontext.Appointments.Remove(appoinments);
             }
         }
         public void Update(Appointment appointment) {
-        var existAppoinment=_appointment.FirstOrDefault(x => x.Id == appointment.Id);
+        var existAppoinment=_hmscontext.Appointments.FirstOrDefault(x => x.Id == appointment.Id);
             if (existAppoinment != null) 
             {
-                _appointment.Remove(existAppoinment);
-                _appointment.Add(appointment);
+                _hmscontext.Appointments.Remove(existAppoinment);
+                _hmscontext.Appointments.Add(appointment);
             }
         }
         public  Appointment GetAppoinmentById(Guid id) 
         {
-            return _appointment.FirstOrDefault(x => x.Id == id);
+            return _hmscontext.Appointments.FirstOrDefault(x => x.Id == id);
 
         }
     }

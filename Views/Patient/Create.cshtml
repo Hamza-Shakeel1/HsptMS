@@ -1,4 +1,4 @@
-﻿@model HsptMS.Models.Patient
+﻿@model HsptMS.Data.Models.Patient
 
 @{
     ViewData["Title"] = "Create";
@@ -13,9 +13,9 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group"hidden>
                 <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
+                <input asp-for="Id"type="hidden" class="form-control" />
                 <span  class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -44,14 +44,14 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DoctorId" class="control-label"></label>
-                <input asp-for="DoctorId" class="form-control" />
+                <label asp-for="DoctorId" class="control-label">Doctors</label>
+                <select asp-for="DoctorId" asp-items="ViewBag.GetDoctors" class="form-control"></select>
                 <span  class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RegisterDate" class="control-label"></label>
-                <input asp-for="RegisterDate" class="form-control" />
-                <span asp-validation-for="RegisterDate" class="text-danger"></span>
+                <label asp-for="AdmissionDate" class="control-label"></label>
+                <input asp-for="AdmissionDate" class="form-control" />
+                <span asp-validation-for="AdmissionDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DischargeDate" class="control-label"></label>

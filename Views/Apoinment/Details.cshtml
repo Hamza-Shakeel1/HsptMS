@@ -1,4 +1,4 @@
-﻿@model HsptMS.Models.Appointment
+﻿@model HsptMS.Data.Models.Appointment
 
 @{
     ViewData["Title"] = "Details";
@@ -30,28 +30,23 @@
             @Html.DisplayFor(model => model.PatientId)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ApoinmentDate)
+            @Html.DisplayNameFor(model => model.AppointmentDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ApoinmentDate)
+            @Html.DisplayFor(model => model.AppointmentDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Porpose)
+            @Html.DisplayNameFor(model => model.Purpose)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Porpose)
+            @Html.DisplayFor(model => model.Purpose)
         </dd>
+       
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ApoinmentTime)
+            @Html.DisplayNameFor(model => model.IsCompleted)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ApoinmentTime)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsComplete)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsComplete)
+            @Html.DisplayFor(model => model.IsCompleted)
         </dd>
     </dl>
 </div>

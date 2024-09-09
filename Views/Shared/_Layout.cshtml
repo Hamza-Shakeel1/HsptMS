@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using HsptMS.Abstraction
+@inject IContextService context;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -27,36 +30,43 @@
 <body>
    
    
-    <header>
+<header>
 
        
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
                 <img src="~/images/Hspt.jpeg"class="Logo-Image" style="border-radius:50px" alt="Alternate Text" />
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HMS</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div  class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <nav  class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                   
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                      
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a>
-                        </li>
-                        <button id="themeSwitcher" class="btn btn-outline-secondary btn-sm">
-                            <i id="themeIcon" class="bi bi-moon-fill"></i>
-                        </button>
-                        </ul>
-                    <div>
-                        <ul class="navbar-nav flex-grow-1">
+                       
+                         
+                            <li class="nav-item">
+
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a>
+                            </li>
+
+                            <button id="themeSwitcher" class="btn btn-outline-secondary btn-sm">
+                                <i id="themeIcon" class="bi bi-moon-fill"></i>
+                            </button>
+                    </ul>
+                       
+                    
+                <ul class="navbar-nav flex-grow-1">  
+                         @if (context.IsUserLoggedIn() == true)
+                        {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Patient" asp-action="Index">Patient</a>
                             </li>
-
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Doctor" asp-action="Index">Doctor</a>
                             </li>
@@ -69,12 +79,28 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Billing" asp-action="Index">Billing</a>
                             </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Authentication" asp-action="Logout">Logout</a>
+                            </li>
+
+                         }
+                         else
+                        {
+                        <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Authentication" asp-action="Signup">Register </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Authentication" asp-action="Login">Login</a>
+                            </li>
+                         } 
+              </nav>
+                        
+        </div>
+
+               
+                        
+    </nav>
+</header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

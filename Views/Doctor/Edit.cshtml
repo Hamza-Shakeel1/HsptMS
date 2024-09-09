@@ -1,4 +1,4 @@
-﻿@model HsptMS.Models.Doctor
+﻿@model HsptMS.Data.Models.Doctor
 
 @{
     ViewData["Title"] = "Edit";
@@ -24,9 +24,9 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Spalization" class="control-label"></label>
-                <input asp-for="Spalization" class="form-control" />
-                <span asp-validation-for="Spalization" class="text-danger"></span>
+                <label asp-for="Specialization" class="control-label"></label>
+                <input asp-for="Specialization" class="form-control" />
+                <span asp-validation-for="Specialization" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Experience" class="control-label"></label>
@@ -34,9 +34,9 @@
                 <span asp-validation-for="Experience" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Contact" class="control-label"></label>
-                <input asp-for="Contact" class="form-control" />
-                <span asp-validation-for="Contact" class="text-danger"></span>
+                <label asp-for="ContactNumber" class="control-label"></label>
+                <input asp-for="ContactNumber" class="form-control" />
+                <span asp-validation-for="ContactNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>

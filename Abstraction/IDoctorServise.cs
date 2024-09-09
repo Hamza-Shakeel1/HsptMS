@@ -1,4 +1,4 @@
-﻿using HsptMS.Models;
+﻿using HsptMS.Data.Models;
 
 namespace HsptMS.Abstraction
 {

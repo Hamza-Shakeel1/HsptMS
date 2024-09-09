@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HsptMS.Models.Patient>
+﻿@model IEnumerable<HsptMS.Data.Models.Patient>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,6 +7,13 @@
 
 <h1>Index</h1>
 
+
+<!-- Search Form -->
+<form asp-action="Search">
+    <input type="text" name="nameSearch" placeholder="Enter patient name" value="@ViewBag.nameSearch" />
+    <button type="submit" asp-action="Search">Search</button>
+    <button type="submit" formaction="@Url.Action("Index")">Reset</button>
+</form>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -35,7 +42,7 @@
                 @Html.DisplayNameFor(model => model.DoctorId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RegisterDate)
+                @Html.DisplayNameFor(model => model.AdmissionDate)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DischargeDate)
@@ -68,16 +75,24 @@
                 @Html.DisplayFor(modelItem => item.DoctorId)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.RegisterDate)
+                    @Html.DisplayFor(modelItem => item.AdmissionDate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DischargeDate)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new {  id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new {  id=item.Id })
-            </td>
+           
+                <td>
+                    <a href='@Url.Action("Edit", new { id = item.Id })' title="Edit">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <a href='@Url.Action("Details", new { id = item.Id })' title="Details">
+                        <i class="bi bi-body-text"></i>
+                    </a>
+                    <a href='@Url.Action("Delete", new { id = item.Id })' title="Delete">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+            
         </tr>
 }
     </tbody>

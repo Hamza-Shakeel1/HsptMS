@@ -1,16 +1,19 @@
 ﻿using HsptMS.Abstraction;
-using HsptMS.Models;
+using HsptMS.Data.Models;
 using HsptMS.Servises;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HsptMS.Controllers
 {
     public class DepartmentController:Controller
     {
         private readonly IDepartmentServise _departmentServise;
-        public DepartmentController(IDepartmentServise departmentServise)
+        private readonly HmsContext _hmscontext;
+        public DepartmentController(IDepartmentServise departmentServise, HmsContext hmscontext)
         {
             _departmentServise = departmentServise;
+            _hmscontext = hmscontext;
         }
 
         public ActionResult Index()

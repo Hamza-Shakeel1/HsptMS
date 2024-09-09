@@ -1,30 +1,40 @@
-﻿using HsptMS.Abstraction;
-using HsptMS.Models;
+﻿using HMS.Data.Extensions;
+using HsptMS.Abstraction;
+using HsptMS.Data.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace HsptMS.Servises
 {
 	public class DepartmentServise:IDepartmentServise
 	{
-        private static List<Department> _departmentList = Seed.SeedDepartment();
-        public List<Department> GetDepartmentList ()
+        private readonly HmsContext _hmscontext;
+        public DepartmentServise(HmsContext hmscontext)
+         {
+            _hmscontext= hmscontext;
+        }
+        
+        public  List<Department> GetDepartmentList ()
         {
-            return _departmentList;
+            return _hmscontext.Departments
+                .ToList();
         }
         public void AddDepartment(Department department)
         {
             department.Id = GuidExtension.GetGuid();
-            _departmentList.Add(department);
+
+            _hmscontext.Departments.Add(department);
         }
         public Department GetDepartmentById(Guid id)
         {
-            return _departmentList.FirstOrDefault(x => x.Id == id);
+            return _hmscontext.Departments.FirstOrDefault(x => x.Id == id);
         }
         public void RemoveDepartmentById(Guid id)
         {
-            var department = _departmentList.FirstOrDefault(d => d.Id == id);
+            var department = _hmscontext.Departments.FirstOrDefault(d => d.Id == id);
             if (department != null)
             {
-                _departmentList.Remove(department);
+                _hmscontext.Departments.Remove(department);
             }
         }
 
@@ -32,11 +42,11 @@ namespace HsptMS.Servises
 
         public void UpdateDepartment(Department department)
         {
-            var existingDepartment = _departmentList.FirstOrDefault(x => x.Id == department.Id);
+            var existingDepartment = _hmscontext.Departments.FirstOrDefault(x => x.Id == department.Id);
             if (existingDepartment != null)
             {
-                _departmentList.Remove(existingDepartment);
-                _departmentList.Add(department);
+                _hmscontext.Departments.Remove(existingDepartment);
+                _hmscontext.Departments.Add(department);
             }
         }
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HsptMS.Models.Appointment>
+﻿@model IEnumerable<HsptMS.Data.Models.Appointment>
 
 @{
     ViewData["Title"] = "Index";
@@ -23,16 +23,14 @@
                 @Html.DisplayNameFor(model => model.PatientId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ApoinmentDate)
+                @Html.DisplayNameFor(model => model.AppointmentDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Porpose)
+                @Html.DisplayNameFor(model => model.Purpose)
             </th>
+          
             <th>
-                @Html.DisplayNameFor(model => model.ApoinmentTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsComplete)
+                @Html.DisplayNameFor(model => model.IsCompleted)
             </th>
             <th></th>
         </tr>
@@ -50,16 +48,14 @@
                 @Html.DisplayFor(modelItem => item.PatientId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ApoinmentDate)
+                @Html.DisplayFor(modelItem => item.AppointmentDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Porpose)
+                @Html.DisplayFor(modelItem => item.Purpose)
             </td>
+         
             <td>
-                @Html.DisplayFor(modelItem => item.ApoinmentTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsComplete)
+                @Html.DisplayFor(modelItem => item.IsCompleted)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new {  id=item.Id}) |

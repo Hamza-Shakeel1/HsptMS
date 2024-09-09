@@ -1,4 +1,4 @@
-﻿using HsptMS.Models;
+﻿using HsptMS.Data.Models;
 namespace HsptMS.Abstraction
 
 {
@@ -11,7 +11,7 @@ namespace HsptMS.Abstraction
         void UpdatePatient(Patient patient);
         void DeletePatient(Guid id);
         void AddPatient(Patient patient);
-
+        Task<List<Patient>> Search(string nameSearch);
 
     }       
     

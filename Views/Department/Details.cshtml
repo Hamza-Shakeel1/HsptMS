@@ -1,4 +1,4 @@
-﻿@model HsptMS.Models.Department
+﻿@model HsptMS.Data.Models.Department
 
 @{
     ViewData["Title"] = "Details";
@@ -18,23 +18,18 @@
             @Html.DisplayFor(model => model.Id)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DepartmentName)
+            @Html.DisplayNameFor(model => model.Name)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DepartmentName)
+            @Html.DisplayFor(model => model.Name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DoctorId)
+            @Html.DisplayNameFor(model => model.Doctors)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DoctorId)
+            @Html.DisplayFor(model => model.Doctors)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PatientId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PatientId)
-        </dd>
+       
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.HeadOfDepartment)
         </dt>
@@ -42,10 +37,10 @@
             @Html.DisplayFor(model => model.HeadOfDepartment)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Contact)
+            @Html.DisplayNameFor(model => model.ContactNumber)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Contact)
+            @Html.DisplayFor(model => model.ContactNumber)
         </dd>
     </dl>
 </div>

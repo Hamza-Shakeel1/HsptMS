@@ -1,18 +1,26 @@
 ﻿using HsptMS.Abstraction;
-using HsptMS.Models;
+using HsptMS.Data.Models;
 using HsptMS.Servise;
 using HsptMS.Servises;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Diagnostics.Contracts;
 
 namespace HsptMS.Controllers
 {
-    public class DoctorController:Controller
+    public class DoctorController : Controller
     {
-       private readonly IDoctorServise _doctorServise;
-        public DoctorController(IDoctorServise doctorServise)
+        private readonly IDoctorServise _doctorServise;
+        private readonly HmsContext _hmscontext;
+    
+        public DoctorController(
+            IDoctorServise doctorServise,
+            HmsContext hmsContext
+            )
         {
             _doctorServise = doctorServise;
+            _hmscontext = hmsContext;
+            
         }
 
 
@@ -30,8 +38,10 @@ namespace HsptMS.Controllers
         [HttpPost]
         public ActionResult Create(Doctor doctor)
         {
-            doctor.Id = GuidExtension.GetGuid();
-            doctor.DepartmentId = GuidExtension.GetGuid();
+            //doctor.Id = GuidExtension.GetGuid();
+            //doctor.DepartmentId = GuidExtension.GetGuid();
+            var doctorList= _hmscontext.Doctors.ToList();
+            ViewBag.DoctorId = new SelectList(doctorList, "Id", "Name");
             _doctorServise.AddDoctor(doctor);
             return RedirectToAction("Index");
         }

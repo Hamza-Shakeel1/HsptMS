@@ -1,4 +1,4 @@
-﻿@model HsptMS.Models.Appointment
+﻿@model HsptMS.Data.Models.Appointment
 
 @{
     ViewData["Title"] = "Edit";
@@ -29,23 +29,19 @@
                 <span asp-validation-for="PatientId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ApoinmentDate" class="control-label"></label>
-                <input asp-for="ApoinmentDate" class="form-control" />
-                <span asp-validation-for="ApoinmentDate" class="text-danger"></span>
+                <label asp-for="AppointmentDate" class="control-label"></label>
+                <input asp-for="AppointmentDate" class="form-control" />
+                <span asp-validation-for="AppointmentDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Porpose" class="control-label"></label>
-                <input asp-for="Porpose" class="form-control" />
-                <span asp-validation-for="Porpose" class="text-danger"></span>
+                <label asp-for="Purpose" class="control-label"></label>
+                <input asp-for="Purpose" class="form-control" />
+                <span asp-validation-for="Purpose" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ApoinmentTime" class="control-label"></label>
-                <input asp-for="ApoinmentTime" class="form-control" />
-                <span asp-validation-for="ApoinmentTime" class="text-danger"></span>
-            </div>
+           
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsComplete" /> @Html.DisplayNameFor(model => model.IsComplete)
+                    <input class="form-check-input" asp-for="IsCompleted" /> @Html.DisplayNameFor(model => model.IsCompleted)
                 </label>
             </div>
             <div class="form-group">
